@@ -1,0 +1,8 @@
+{% for each in todos  %}
+    <div>
+        <h2>{{ each.name }}</h2>
+        <h2>{{ each.description }}</h2>
+        <h2>{{ each.created_at }}</h2>
+        <h2>{{ each.deadline }}</h2>
+    </div>
+{% endfor %}

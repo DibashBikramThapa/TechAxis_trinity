@@ -1,8 +1,27 @@
+<div style="padding:2rem;">
+    <a href='/todo/create'><button>Create</button></a>
+</div>
+
+
+<div style="display:flex; flex-direction:column; row-gap:2rem">
 {% for each in todos  %}
-    <div>
-        <h2>{{ each.name }}</h2>
-        <h2>{{ each.description }}</h2>
-        <h2>{{ each.created_at }}</h2>
-        <h2>{{ each.deadline }}</h2>
+    <div style="box-shadow: 0px 2px 10px 0px; padding:10px;">
+        <h1>{{ each.name }}</h1>
+        {% comment %} <div style="display:flex;">
+            <label> Descp: </label>
+            <dd>{{ each.description }}</dd>
+        </div> {% endcomment %}
+        <div style="display:flex;">
+            <label> Created at: </label>
+            <dd>{{ each.created_at }}</dd>
+        </div>
+        <div style="display:flex;">
+            <label> Deadline: </label>
+            <dd>{{ each.deadline }}</dd>
+        </div>
+        <div>
+            <a href='/todo/detail/{{ each.id }}'>View Details</a>
+        </div>
     </div>
 {% endfor %}
+</div>

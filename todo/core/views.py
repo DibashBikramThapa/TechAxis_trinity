@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.views import generic
+from django.urls import reverse_lazy
 # Create your views here.
 
 from core.models import Todo
+from core.forms import TodoCreateForm
 
 
 class TodoListView(generic.ListView):
@@ -11,3 +13,13 @@ class TodoListView(generic.ListView):
     context_object_name = 'todos'
 
 
+class TodoCreateView(generic.CreateView):
+    template_name = 'core/create.html'
+    form_class = TodoCreateForm
+    success_url = reverse_lazy('todo_list')
+
+
+class TodoDetailView(generic.DetailView):
+    template_name = 'core/detail.html'
+    queryset = Todo.objects.all()
+    context_object_name = 'todo'

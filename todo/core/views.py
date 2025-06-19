@@ -23,3 +23,15 @@ class TodoDetailView(generic.DetailView):
     template_name = 'core/detail.html'
     queryset = Todo.objects.all()
     context_object_name = 'todo'
+
+
+class TodoUpdateView(generic.UpdateView):
+    template_name = 'core/update.html'
+    form_class = TodoCreateForm
+    queryset = Todo.objects.all()
+    success_url = reverse_lazy('todo_list')
+
+class TodoDeleteView(generic.DeleteView):
+    template_name = 'core/delete.html'
+    queryset = Todo.objects.all()
+    success_url = reverse_lazy('todo_list')

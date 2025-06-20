@@ -2,6 +2,13 @@
     <a href='/todo/create'><button>Create</button></a>
 </div>
 
+<div>
+    <form method="get" action={% url 'todo_list' %}>
+        <input name="q"/>
+        <button>Search</button>
+    </form>
+</div>
+
 
 <div style="display:flex; flex-direction:column; row-gap:2rem">
 {% for each in todos  %}

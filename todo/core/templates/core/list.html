@@ -9,6 +9,13 @@
     </form>
 </div>
 
+<div>
+    <form method="post" action={% url 'my_logout' %}>
+        {% csrf_token %}
+        <button>LOGOUT</button>
+    </form>
+</div>
+
 
 <div style="display:flex; flex-direction:column; row-gap:2rem">
 {% for each in todos  %}

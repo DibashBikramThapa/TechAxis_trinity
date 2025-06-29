@@ -2,13 +2,15 @@ from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse_lazy
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 # Create your views here.
 
 from core.models import Todo
 from core.forms import TodoCreateForm
 
 
-class TodoListView(generic.ListView):
+class TodoListView(LoginRequiredMixin, generic.ListView):
     queryset = Todo.objects.all()
     template_name = 'core/list.html'
     context_object_name = 'todos'

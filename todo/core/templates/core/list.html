@@ -10,6 +10,10 @@
 </div>
 
 <div>
+    <h3>Welcome User: {{ user }} </h3>
+<div>
+
+<div>
     <form method="post" action={% url 'my_logout' %}>
         {% csrf_token %}
         <button>LOGOUT</button>

@@ -24,25 +24,25 @@ class TodoListView(LoginRequiredMixin, generic.ListView):
         return queryset
 
 
-class TodoCreateView(generic.CreateView):
+class TodoCreateView(LoginRequiredMixin, generic.CreateView):
     template_name = 'core/create.html'
     form_class = TodoCreateForm
     success_url = reverse_lazy('todo_list')
 
 
-class TodoDetailView(generic.DetailView):
+class TodoDetailView(LoginRequiredMixin, generic.DetailView):
     template_name = 'core/detail.html'
     queryset = Todo.objects.all()
     context_object_name = 'todo'
 
 
-class TodoUpdateView(generic.UpdateView):
+class TodoUpdateView(LoginRequiredMixin, generic.UpdateView):
     template_name = 'core/update.html'
     form_class = TodoCreateForm
     queryset = Todo.objects.all()
     success_url = reverse_lazy('todo_list')
 
-class TodoDeleteView(generic.DeleteView):
+class TodoDeleteView(LoginRequiredMixin, generic.DeleteView):
     template_name = 'core/delete.html'
     queryset = Todo.objects.all()
     success_url = reverse_lazy('todo_list')

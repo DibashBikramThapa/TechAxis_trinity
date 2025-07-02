@@ -37,6 +37,10 @@
             <label> Deadline: </label>
             <dd>{{ each.deadline }}</dd>
         </div>
+        <div style="display:flex;">
+            <label> Created By: </label>
+            <dd>{{ each.created_by }}</dd>
+        </div>
         <div>
             <a href='/todo/detail/{{ each.id }}'>View Details</a>
             <a href='/todo/update/{{ each.id }}'>Edit</a>

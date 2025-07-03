@@ -18,7 +18,9 @@ class TodoListView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         queryset =  super().get_queryset()
         query = self.request.GET.get('q')
-        my_filter = Q(created_by=self.request.user)
+        my_filter = Q()
+        if not self.request.user.is_superuser:
+            my_filter &= Q(created_by=self.request.user)
         if query:
             my_filter &= (Q(name__contains=query) | Q(description__contains=query))
         queryset = queryset.filter(my_filter)

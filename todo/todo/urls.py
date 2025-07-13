@@ -22,4 +22,5 @@ urlpatterns = [
     path('todo/', include('core.urls')),
     path('my_auth/', include('auth_custom.urls')),
     path('api/', include('core_api.urls')),
+    path('api/', include('auth_api.urls')),
 ]

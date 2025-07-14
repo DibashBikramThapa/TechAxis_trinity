@@ -4,6 +4,8 @@ from rest_framework.response import Response
 
 class CustomAuthToken(ObtainAuthToken):
 
+    authentication_classes = []
+
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data,
                                            context={'request': request})

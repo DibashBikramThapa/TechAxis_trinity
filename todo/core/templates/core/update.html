@@ -1,0 +1,5 @@
+<form method='post' onSubmit='/todo/update'>
+    {% csrf_token %}
+    {{ form }}
+    <button type='submit'>Update</button>
+</form>

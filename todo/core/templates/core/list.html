@@ -1,0 +1,51 @@
+<div style="padding:2rem;">
+    <a href='/todo/create'><button>Create</button></a>
+</div>
+
+<div>
+    <form method="get" action={% url 'todo_list' %}>
+        <input name="q"/>
+        <button>Search</button>
+    </form>
+</div>
+
+<div>
+    <h3>Welcome User: {{ user }} </h3>
+<div>
+
+<div>
+    <form method="post" action={% url 'my_logout' %}>
+        {% csrf_token %}
+        <button>LOGOUT</button>
+    </form>
+</div>
+
+
+<div style="display:flex; flex-direction:column; row-gap:2rem">
+{% for each in todos  %}
+    <div style="box-shadow: 0px 2px 10px 0px; padding:10px;">
+        <h1>{{ each.name }}</h1>
+        {% comment %} <div style="display:flex;">
+            <label> Descp: </label>
+            <dd>{{ each.description }}</dd>
+        </div> {% endcomment %}
+        <div style="display:flex;">
+            <label> Created at: </label>
+            <dd>{{ each.created_at }}</dd>
+        </div>
+        <div style="display:flex;">
+            <label> Deadline: </label>
+            <dd>{{ each.deadline }}</dd>
+        </div>
+        <div style="display:flex;">
+            <label> Created By: </label>
+            <dd>{{ each.created_by }}</dd>
+        </div>
+        <div>
+            <a href='/todo/detail/{{ each.id }}'>View Details</a>
+            <a href='/todo/update/{{ each.id }}'>Edit</a>
+            <a href='/todo/delete/{{ each.id }}'>Delete</a>
+        </div>
+    </div>
+{% endfor %}
+</div>
